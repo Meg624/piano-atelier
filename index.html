@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Atelier Sonorité | グランドピアノ専門店</title>
+<meta name="description" content="Atelier Sonorité(アトリエ・ソノリテ)は、ヨーロッパ製グランドピアノを専門に扱うプライベートショールームです。" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500;1,600&family=Noto+Serif+JP:wght@500;700&family=Noto+Sans+JP:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav class="nav">
+  <a href="#" class="nav-brand">Atelier Sonorité</a>
+  <div class="nav-links">
+    <a href="#concept">コンセプト</a>
+    <a href="#craft">こだわり</a>
+    <a href="#access">アクセス</a>
+  </div>
+</nav>
+
+<header class="hero" id="hero">
+  <div class="piano-stage" aria-hidden="true">
+    <svg class="piano-svg" viewBox="0 0 1000 560" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="glow" cx="60%" cy="45%" r="60%">
+          <stop offset="0%" stop-color="#CBA24B" stop-opacity="0.35" />
+          <stop offset="100%" stop-color="#CBA24B" stop-opacity="0" />
+        </radialGradient>
+        <linearGradient id="lacquer" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#26221D" />
+          <stop offset="55%" stop-color="#121110" />
+          <stop offset="100%" stop-color="#0A0908" />
+        </linearGradient>
+      </defs>
+
+      <!-- 本体(常に見える輪郭) -->
+      <path d="M150,120 L150,420 Q280,478 470,462 Q700,442 830,360 Q945,288 900,190 Q860,100 690,88 Q520,76 340,92 Q210,103 150,120 Z"
+            fill="url(#lacquer)" stroke="#000" stroke-width="1" />
+
+      <!-- ソンドボードの淡い輝き -->
+      <ellipse class="soundboard-glow" cx="600" cy="260" rx="320" ry="190" fill="url(#glow)" />
+
+      <!-- 弦(蓋が開くと現れる) -->
+      <g class="strings" stroke="#CBA24B" stroke-width="1.1">
+        <line x1="210" y1="150" x2="830" y2="210" />
+        <line x1="210" y1="180" x2="850" y2="235" />
+        <line x1="210" y1="210" x2="860" y2="262" />
+        <line x1="210" y1="240" x2="850" y2="290" />
+        <line x1="210" y1="270" x2="820" y2="315" />
+        <line x1="210" y1="300" x2="770" y2="335" />
+        <line x1="210" y1="330" x2="700" y2="352" />
+        <line x1="210" y1="360" x2="610" y2="365" />
+      </g>
+
+      <!-- 蓋(スクロールで開く) -->
+      <path class="lid"
+            d="M150,120 L150,420 Q280,478 470,462 Q700,442 830,360 Q945,288 900,190 Q860,100 690,88 Q520,76 340,92 Q210,103 150,120 Z"
+            fill="url(#lacquer)" stroke="#000" stroke-width="1" />
+      <!-- 蓋の艶ハイライト -->
+      <path class="lid lid-sheen"
+            d="M210,130 Q450,100 690,110 Q820,118 880,175"
+            fill="none" stroke="#CBA24B" stroke-width="1.4" stroke-opacity="0.45" />
+
+      <!-- 鍵盤(閉じていても常にピアノと分かるよう蓋の手前に描画) -->
+      <g class="keyboard">
+        <rect x="150" y="120" width="46" height="300" fill="#EFE9DB" stroke="#0A0908" stroke-width="1" />
+        <g stroke="#0A0908" stroke-width="1">
+          <line x1="164" y1="120" x2="164" y2="420" />
+          <line x1="178" y1="120" x2="178" y2="420" />
+        </g>
+        <!-- 黒鍵 -->
+        <g fill="#161310">
+          <rect x="150" y="132" width="30" height="10" />
+          <rect x="150" y="160" width="30" height="10" />
+          <rect x="150" y="188" width="30" height="10" />
+          <rect x="150" y="226" width="30" height="10" />
+          <rect x="150" y="254" width="30" height="10" />
+          <rect x="150" y="282" width="30" height="10" />
+          <rect x="150" y="320" width="30" height="10" />
+          <rect x="150" y="348" width="30" height="10" />
+          <rect x="150" y="376" width="30" height="10" />
+        </g>
+      </g>
+    </svg>
+  </div>
+
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Atelier Sonorité — Since the first note</p>
+    <h1 class="hero-title">響きを、<br class="br-mobile" />贅沢に。</h1>
+    <p class="hero-sub">
+      ヨーロッパ製グランドピアノを一台ずつ選び抜き、木の香りとともにお届けするプライベートショールーム。
+      演奏する時間そのものを、上質な体験へ。
+    </p>
+    <div class="hero-cta">
+      <a class="btn" href="#access">ショールーム予約</a>
+      <a class="btn" href="#concept">コンセプトを見る</a>
+    </div>
+  </div>
+</header>
+
+<section class="section" id="concept">
+  <div class="container concept-grid">
+    <div>
+      <span class="eyebrow">Concept</span>
+      <h2 class="section-title">一台に、<br />職人の一生を聴く。</h2>
+      <p class="concept-lead">
+        Atelier Sonoritéが扱うのは、量産では辿り着けない領域のグランドピアノだけ。
+        欧州の工房で、木材選定から弦の張り、鍵盤の調整までを一人の職人が仕上げた個体を、
+        直接買い付けています。展示台数はあえて絞り、一台ごとの物語をお伝えできる体制を保っています。
+      </p>
+    </div>
+    <div class="spec-statement">
+      <div class="spec-row">
+        <span class="spec-value">88</span>
+        <span class="spec-label">鍵、すべてが手作業で調整</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-value">220cm</span>
+        <span class="spec-label">フルコンサートグランドの奥行き</span>
+      </div>
+      <div class="spec-row">
+        <span class="spec-value">3</span>
+        <span class="spec-label">段階の音色調整で個体を仕上げ</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section is-dark" id="craft">
+  <div class="container">
+    <span class="eyebrow">Craft</span>
+    <h2 class="section-title">素材が、音色を決める。</h2>
+    <p class="concept-lead" style="color: var(--color-text-muted-noir);">
+      同じ設計図でも、木の乾燥期間や金具の合金比率でまったく違う音になる。
+      私たちが仕入れの段階から立ち会う理由です。
+    </p>
+
+    <div class="materials-grid">
+      <article class="material-card">
+        <div class="material-swatch swatch-wood"></div>
+        <h3 class="material-name">響板 — スプルース材</h3>
+        <p class="material-desc">
+          10年以上自然乾燥させた単板を使用。年輪の詰まった木目が、
+          芯のある伸びやかな響きを生みます。
+        </p>
+      </article>
+      <article class="material-card">
+        <div class="material-swatch swatch-brass"></div>
+        <h3 class="material-name">金具 — 真鍮ペダル</h3>
+        <p class="material-desc">
+          手磨きで仕上げた無垢の真鍮。踏み込むたびに、
+          わずかな重みと共に確かな手応えを返します。
+        </p>
+      </article>
+      <article class="material-card">
+        <div class="material-swatch swatch-felt"></div>
+        <h3 class="material-name">ハンマー — 上質フェルト</h3>
+        <p class="material-desc">
+          密度の異なるフェルトを重ねて成形。強弱の幅を広く取れる、
+          しなやかな打鍵を実現します。
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="access">
+  <div class="container access-grid">
+    <div>
+      <span class="eyebrow">Access</span>
+      <h2 class="section-title">ショールームへ</h2>
+      <ul class="access-list">
+        <li>
+          <span class="access-key">住所</span>
+          <span>北海道○○市○○ 1-2-3(ご予約制)</span>
+        </li>
+        <li>
+          <span class="access-key">営業時間</span>
+          <span>11:00 – 18:00(火・水 定休)</span>
+        </li>
+        <li>
+          <span class="access-key">ご予約</span>
+          <span>お電話またはフォームより、3営業日前までにご連絡ください。</span>
+        </li>
+        <li>
+          <span class="access-key">連絡先</span>
+          <span>contact@example.com / 000-0000-0000</span>
+        </li>
+      </ul>
+      <div class="hero-cta" style="justify-content: flex-start; margin-top: 2.4rem;">
+        <a class="btn is-dark" href="mailto:contact@example.com">見学を予約する</a>
+      </div>
+    </div>
+    <div class="map-frame"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58258.24134502177!2d-87.91426796426401!3d42.12569834067517!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fc7f1fbbf60ed%3A0xf63a3e1e29d70ba7!2sNorthShore%20PianoForte!5e1!3m2!1sja!2sjp!4v1785551304074!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>Map(地図を差し込み)</div>
+  </div>
+</section>
+
+<footer class="footer">
+  © 2026 Atelier Sonorité. All rights reserved.
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,410 @@
+/* ============================================
+   Atelier Sonorité — Design Tokens
+   コンセプト: グランドピアノの黒鏡面塗装・真鍮金具・
+   フェルトハンマー・木の響きを軸にしたラグジュアリー配色
+   ============================================ */
+:root {
+  --color-noir: #121110;        /* 黒鏡面塗装 */
+  --color-noir-raised: #1B1917;
+  --color-ivory: #EFE9DB;       /* 鍵盤 */
+  --color-ivory-dim: #E2DAC6;
+  --color-brass: #A9822F;       /* ペダル金具 */
+  --color-brass-bright: #CBA24B;
+  --color-burgundy: #5C2A32;    /* フェルトハンマー */
+  --color-line-dark: #37332C;
+  --color-line-light: #D8CFB8;
+  --color-text-on-noir: #E8E2D2;
+  --color-text-muted-noir: #A39C8A;
+  --color-text-muted-ivory: #6B6250;
+
+  --font-display: "Cormorant", "Noto Serif JP", serif;
+  --font-body: "Noto Sans JP", sans-serif;
+
+  --content-width: 1120px;
+  --gutter: clamp(1.25rem, 5vw, 4rem);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+body {
+  margin: 0;
+  background: var(--color-ivory);
+  color: var(--color-noir);
+  font-family: var(--font-body);
+  line-height: 1.8;
+  font-size: 1rem;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.3;
+}
+
+a { color: inherit; }
+
+.container {
+  max-width: var(--content-width);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* ---------- Nav ---------- */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.6rem var(--gutter);
+  color: var(--color-text-on-noir);
+  mix-blend-mode: difference;
+}
+
+.nav-brand {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+}
+
+.nav-links a {
+  text-decoration: none;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  background: var(--color-noir);
+  color: var(--color-text-on-noir);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 0 var(--gutter);
+  text-align: center;
+}
+
+.hero-eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-brass-bright);
+  margin-bottom: 1.6rem;
+}
+
+.hero-title {
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  font-style: italic;
+  letter-spacing: 0.01em;
+}
+
+.hero-sub {
+  margin: 1.8rem auto 0;
+  max-width: 46ch;
+  color: var(--color-text-muted-noir);
+  font-size: 1.05rem;
+}
+
+.hero-cta {
+  margin-top: 2.6rem;
+  display: inline-flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  padding: 0.9em 2em;
+  border: 1px solid var(--color-brass-bright);
+  border-radius: 0;
+  text-decoration: none;
+  color: var(--color-text-on-noir);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.btn:hover {
+  background: var(--color-brass-bright);
+  color: var(--color-noir);
+}
+
+.btn.is-dark {
+  border-color: var(--color-noir);
+  color: var(--color-noir);
+}
+
+.btn.is-dark:hover {
+  background: var(--color-noir);
+  color: var(--color-ivory);
+}
+
+/* ---------- Piano lid signature illustration ---------- */
+.piano-stage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.piano-svg {
+  width: min(1100px, 92vw);
+  height: auto;
+}
+
+/* 蓋(lid)がスクロールに応じて開く。JSで --lid-open (0→1) を更新 */
+.lid {
+  transform-origin: 15% 50%;
+  transform:
+    translateY(calc(-46px * var(--lid-open, 0)))
+    rotate(calc(-7deg * var(--lid-open, 0)));
+  opacity: calc(1 - (var(--lid-open, 0) * 0.88));
+  transition: transform 0.12s linear, opacity 0.12s linear;
+}
+
+.strings line {
+  opacity: var(--lid-open, 0);
+  transition: opacity 0.3s ease;
+}
+
+.soundboard-glow {
+  opacity: calc(var(--lid-open, 0) * 0.9);
+  transition: opacity 0.3s ease;
+}
+
+/* ---------- Section shared ---------- */
+.section {
+  padding-block: clamp(4rem, 10vw, 7rem);
+}
+
+.section.is-dark {
+  background: var(--color-noir);
+  color: var(--color-text-on-noir);
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-brass);
+  margin-bottom: 1.2rem;
+  display: block;
+}
+
+.is-dark .eyebrow {
+  color: var(--color-brass-bright);
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-style: italic;
+  margin-bottom: 1.4rem;
+}
+
+/* ---------- Concept: spec statement ---------- */
+.concept-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.concept-lead {
+  font-size: 1.05rem;
+  color: var(--color-text-muted-ivory);
+  max-width: 46ch;
+}
+
+.spec-statement {
+  border-top: 1px solid var(--color-line-light);
+  border-bottom: 1px solid var(--color-line-light);
+  padding-block: 2rem;
+}
+
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-block: 1rem;
+}
+
+.spec-row + .spec-row {
+  border-top: 1px solid var(--color-line-light);
+}
+
+.spec-value {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  color: var(--color-burgundy);
+}
+
+.spec-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted-ivory);
+  text-align: right;
+  max-width: 18ch;
+}
+
+/* ---------- Craft: material specimens ---------- */
+.materials-grid {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--color-line-dark);
+}
+
+.material-card {
+  background: var(--color-noir-raised);
+  padding: clamp(1.6rem, 3vw, 2.4rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  min-height: 320px;
+}
+
+.material-swatch {
+  width: 100%;
+  height: 120px;
+  border: 1px solid var(--color-line-dark);
+}
+
+.swatch-wood {
+  background:
+    repeating-linear-gradient(100deg, #4a3323 0px, #4a3323 3px, #5c4230 3px, #5c4230 7px);
+}
+
+.swatch-brass {
+  background: linear-gradient(135deg, var(--color-brass) 0%, var(--color-brass-bright) 50%, var(--color-brass) 100%);
+}
+
+.swatch-felt {
+  background: var(--color-burgundy);
+}
+
+.material-name {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--color-text-on-noir);
+}
+
+.material-desc {
+  font-size: 0.9rem;
+  color: var(--color-text-muted-noir);
+}
+
+/* ---------- Access ---------- */
+.access-grid {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.access-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.4rem;
+}
+
+.access-list li {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  gap: 1rem;
+  border-top: 1px solid var(--color-line-light);
+  padding-top: 1.2rem;
+}
+
+.access-key {
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted-ivory);
+}
+
+.map-frame {
+  border: 1px solid var(--color-line-light);
+  aspect-ratio: 4 / 3;
+  background:
+    linear-gradient(135deg, var(--color-ivory-dim) 25%, transparent 25%) -10px 0,
+    linear-gradient(225deg, var(--color-ivory-dim) 25%, transparent 25%) -10px 0,
+    linear-gradient(315deg, var(--color-ivory-dim) 25%, transparent 25%),
+    linear-gradient(45deg, var(--color-ivory-dim) 25%, transparent 25%);
+  background-size: 20px 20px;
+  background-color: var(--color-ivory);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: var(--color-text-muted-ivory);
+  letter-spacing: 0.05em;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  background: var(--color-noir);
+  color: var(--color-text-muted-noir);
+  padding-block: 2.5rem;
+  text-align: center;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .concept-grid,
+  .access-grid {
+    grid-template-columns: 1fr;
+  }
+  .materials-grid {
+    grid-template-columns: 1fr;
+  }
+  .nav-links {
+    gap: 1.1rem;
+    font-size: 0.7rem;
+  }
+}
+
+/* ---------- Focus visibility ---------- */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-brass-bright);
+  outline-offset: 3px;
+}
