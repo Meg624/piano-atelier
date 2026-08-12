@@ -24,6 +24,25 @@
   --gutter: clamp(1.25rem, 5vw, 4rem);
 }
 
+/* ---------- 白いグランドピアノ・テーマ ---------- */
+[data-theme="white"] {
+  --color-noir: #FAF7F1;         /* 真珠のような白鏡面塗装 */
+  --color-noir-raised: #F1ECE0;
+  --color-brass: #C9A15A;        /* 白ピアノには少し柔らかい真鍮に */
+  --color-brass-bright: #E0BE84;
+  --color-line-dark: #E4DCC8;
+  --color-text-on-noir: #2A241C; /* 背景が明るくなるので文字は濃色に */
+  --color-text-muted-noir: #7A7160;
+}
+
+[data-theme="white"] .hero {
+  background: var(--color-noir);
+}
+
+[data-theme="white"] .nav {
+  mix-blend-mode: normal;
+}
+
 * { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
@@ -90,6 +109,24 @@ a { color: inherit; }
 
 .nav-links a {
   text-decoration: none;
+}
+
+.theme-toggle {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  background: transparent;
+  border: 1px solid currentColor;
+  color: inherit;
+  padding: 0.4em 0.9em;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: currentColor;
+  color: var(--color-noir);
 }
 
 /* ---------- Hero ---------- */

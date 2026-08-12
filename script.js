@@ -29,3 +29,30 @@
   window.addEventListener("resize", update);
   update();
 })();
+
+/* ---------- 白/黒ピアノ テーマ切り替え ---------- */
+(function () {
+  var toggle = document.getElementById("themeToggle");
+  var body = document.getElementById("pianoBody");
+  var lid = document.getElementById("pianoLid");
+  var root = document.documentElement;
+
+  if (!toggle || !body || !lid) return;
+
+  function applyTheme(theme) {
+    root.setAttribute("data-theme", theme);
+    var fillUrl = theme === "white" ? "url(#lacquer-white)" : "url(#lacquer)";
+    var strokeColor = theme === "white" ? "#C9BFA8" : "#000";
+    body.setAttribute("fill", fillUrl);
+    body.setAttribute("stroke", strokeColor);
+    lid.setAttribute("fill", fillUrl);
+    lid.setAttribute("stroke", strokeColor);
+    toggle.setAttribute("aria-pressed", theme === "white" ? "true" : "false");
+    toggle.textContent = theme === "white" ? "Black Piano に切り替え" : "White Piano に切り替え";
+  }
+
+  toggle.addEventListener("click", function () {
+    var current = root.getAttribute("data-theme") || "noir";
+    applyTheme(current === "white" ? "noir" : "white");
+  });
+})();
