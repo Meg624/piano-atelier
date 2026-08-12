@@ -6,6 +6,7 @@
 :root {
   --color-noir: #121110;        /* 黒鏡面塗装 */
   --color-noir-raised: #1B1917;
+  --color-ink: #121110;         /* ページ全体の文字色(テーマに関係なく固定) */
   --color-ivory: #EFE9DB;       /* 鍵盤 */
   --color-ivory-dim: #E2DAC6;
   --color-brass: #A9822F;       /* ペダル金具 */
@@ -55,7 +56,7 @@ html { scroll-behavior: smooth; }
 body {
   margin: 0;
   background: var(--color-ivory);
-  color: var(--color-noir);
+  color: var(--color-ink);
   font-family: var(--font-body);
   line-height: 1.8;
   font-size: 1rem;
@@ -193,16 +194,16 @@ a { color: inherit; }
 
 .btn:hover {
   background: var(--color-brass-bright);
-  color: var(--color-noir);
+  color: var(--color-ink);
 }
 
 .btn.is-dark {
-  border-color: var(--color-noir);
-  color: var(--color-noir);
+  border-color: var(--color-ink);
+  color: var(--color-ink);
 }
 
 .btn.is-dark:hover {
-  background: var(--color-noir);
+  background: var(--color-ink);
   color: var(--color-ivory);
 }
 
